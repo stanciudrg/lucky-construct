@@ -1,0 +1,1 @@
+(()=>{"use strict";document.querySelector("header").classList.remove("invisible"),document.querySelector("#contact").classList.add("selected")})();
