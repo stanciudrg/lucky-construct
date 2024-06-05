@@ -1,0 +1,350 @@
+/* Font style declarations */
+@font-face {
+  font-family: "InstrumentSans";
+  src: url("../fonts/InstrumentSans-Regular.woff");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "InstrumentSans";
+  src: url("../fonts/InstrumentSans-Medium.woff");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "InstrumentSans";
+  src: url("../fonts/InstrumentSans-SemiBold.woff");
+  font-weight: 600;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+  display: none;
+}
+
+*,
+*::after,
+*::before {
+  font-family:
+    "InstrumentSans",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  box-sizing: border-box;
+  /* Disables the colored highlight that is supposed to appear over a link while it's being 
+    tapped but also appears over button elements on mobile devices */
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+}
+
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  z-index: 2;
+  min-width: 335px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 10px 50px 0px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  padding: 0.5rem 2rem;
+  max-width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.8rem;
+}
+
+.logo a img {
+  height: 60px;
+  width: 60px;
+}
+
+.logo .name {
+  display: flex;
+  font-size: 26px;
+  font-weight: 500;
+  color: rgba(40, 40, 40);
+  gap: 6px;
+}
+
+.logo .name span:first-of-type {
+  font-weight: 600;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  list-style-type: none;
+  gap: 3rem;
+}
+
+nav ul li a {
+  position: relative;
+  font-size: 20px;
+  color: rgba(60, 60, 60);
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: color 250ms ease-in-out;
+}
+
+nav ul li a.selected,
+nav ul li a:hover {
+  color: rgba(0, 0, 0);
+}
+
+nav ul li a.selected::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: -5px;
+  right: 0;
+  height: 2px;
+  width: calc(100% + 10px);
+  background: linear-gradient(
+    90deg,
+    rgba(54, 143, 130, 1) 0% 33%,
+    rgba(245, 113, 81, 1) 33% 66%,
+    rgba(145, 176, 255, 1) 66% 99%
+  );
+  border-radius: 2rem;
+}
+
+nav .menu-toggler {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+}
+
+nav .menu-toggler .menu-toggler-icon {
+  position: relative;
+  width: 24px;
+  height: 12px;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+nav .menu-toggler .menu-toggler-icon span {
+  position: absolute;
+  display: block;
+  height: 2px;
+  width: 100%;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+  opacity: 1;
+  border-radius: 2rem;
+}
+
+nav .menu-toggler .menu-toggler-icon span:nth-child(1) {
+  top: 0px;
+  background-color: rgba(54, 143, 130, 1);
+}
+
+nav .menu-toggler .menu-toggler-icon span:nth-child(2),
+nav .menu-toggler .menu-toggler-icon span:nth-child(3) {
+  top: 8px;
+  background-color: rgba(245, 113, 81, 1);
+}
+
+nav .menu-toggler .menu-toggler-icon span:nth-child(4) {
+  top: 16px;
+  background-color: rgba(145, 176, 255, 1);
+}
+
+nav .menu-toggler .menu-toggler-icon.open span:nth-child(1),
+nav .menu-toggler .menu-toggler-icon.open span:nth-child(4) {
+  width: 0%;
+  top: 18px;
+  left: 50%;
+}
+
+nav .menu-toggler .menu-toggler-icon.open span:nth-child(2) {
+  background-color: rgba(60, 60, 60);
+  transform: rotate(40deg);
+}
+
+nav .menu-toggler .menu-toggler-icon.open span:nth-child(3) {
+  background-color: rgba(60, 60, 60);
+  transform: rotate(-40deg);
+}
+
+.localization {
+  display: none;
+  max-width: 1300px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7rem;
+  margin-bottom: 0;
+  gap: 0.5rem;
+  padding: 0 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.localization a {
+  color: rgba(60, 60, 60);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.localization span {
+  font-weight: 500;
+}
+
+.localization a:first-of-type:hover {
+  text-decoration: underline;
+}
+
+.localization a.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: rgba(40, 40, 40);
+  font-weight: 600;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.sticky-contact-me {
+  display: none;
+  z-index: 1;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  transition: 250ms ease-in-out bottom;
+}
+
+.sticky-contact-me a {
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(54, 143, 130, 1) 0 33%,
+    rgba(245, 113, 81, 1) 33% 70%,
+    rgba(145, 176, 255, 1) 70% 100%
+  );
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+}
+
+.sticky-contact-me svg {
+  width: 20px;
+  height: 20px;
+}
+
+footer {
+  max-width: 1300px;
+  font-weight: 500;
+  margin: 3rem auto 1rem auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 1024px) {
+  nav .menu-toggler {
+    display: flex;
+  }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    flex-direction: column;
+    background-color: white;
+    padding-top: 10vh;
+    opacity: 0;
+    transition: 0.25s opacity ease-in-out;
+  }
+
+  nav ul.visible {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding: 0.5rem 1rem;
+  }
+
+  .logo a img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .logo .name {
+    font-size: 20px;
+    gap: 4px;
+  }
+
+  nav ul li a {
+    font-size: 18px;
+  }
+
+  .localization {
+    margin-top: 5rem;
+    padding: 0 1rem;
+    font-size: 16px;
+  }
+}

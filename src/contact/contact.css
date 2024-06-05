@@ -1,0 +1,128 @@
+.contact {
+  max-width: 700px;
+  width: 100%;
+  padding: 0 2rem;
+  margin: calc(8rem - 5px) auto 0 auto;
+}
+
+.contact h2 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: rgba(20, 20, 20);
+  text-align: center;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.contact-details > div {
+  border-radius: 1rem;
+  border: 1px solid rgba(20, 20, 20);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0 0 0;
+  overflow: hidden;
+  position: relative;
+  color: rgba(20, 20, 20);
+}
+
+.contact-details span {
+  margin-top: 0.5rem;
+  font-weight: 00;
+  font-size: 16px;
+}
+
+.contact-details .whatsapp svg {
+  width: 100px;
+  height: 30px;
+}
+
+.contact-details .phone svg {
+  width: 30px;
+  height: 30px;
+}
+
+.contact-details .email svg {
+  width: 30px;
+  height: 30px;
+}
+
+.contact-details a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  transition: 250ms ease-in-out background-color;
+}
+
+.contact-details .whatsapp > a {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(54, 143, 130, 0.8),
+    rgba(54, 143, 130, 1)
+  );
+}
+
+.contact-details .phone > a {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(245, 113, 81, 0.8),
+    rgba(245, 113, 81, 1)
+  );
+}
+
+.contact-details .email > a {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(145, 176, 255, 0.8),
+    rgba(145, 176, 255, 1)
+  );
+}
+
+@media (max-width: 1024px) {
+  .localization {
+    display: flex;
+  }
+
+  .localization span {
+    color: rgba(145, 176, 255, 1);
+  }
+
+  .contact {
+    margin-top: calc(1rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .contact {
+    padding: 0 1rem;
+  }
+
+  .contact h2 {
+    font-size: 24px;
+  }
+
+  .contact-details {
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  .contact-details span {
+    margin-top: 0.5rem;
+  }
+
+  .contact-details a {
+    font-size: 16px;
+  }
+}
