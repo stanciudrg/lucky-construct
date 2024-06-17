@@ -27,7 +27,34 @@
           </div>
         </a>
       </div>
-      <%= htmlWebpackPlugin.options.links %>
+      <ul>
+        <li>
+          <a id="home" href="<%= htmlWebpackPlugin.options.path %>index.html"
+            >Acasă</a
+          >
+        </li>
+        <li>
+          <a
+            id="services"
+            href="<%= htmlWebpackPlugin.options.path %>services/services.html"
+            >Servicii</a
+          >
+        </li>
+        <li>
+          <a
+            id="gallery"
+            href="<%= htmlWebpackPlugin.options.path %>gallery/gallery.html"
+            >Galerie</a
+          >
+        </li>
+        <li>
+          <a
+            id="contact"
+            href="<%= htmlWebpackPlugin.options.path %>contact/contact.html"
+            >Contact</a
+          >
+        </li>
+      </ul>
       <button class="menu-toggler">
         <div class="menu-toggler-icon">
           <span></span>
@@ -42,7 +69,9 @@
     <div class="localization">
       <a href="../index.html">Acasă</a>
       <span>/</span>
-      <%= htmlWebpackPlugin.options.localization %>
+      <a class="disabled" href="<%= htmlWebpackPlugin.options.localization %>">
+        <%= htmlWebpackPlugin.options.pageName %>
+      </a>
     </div>
     <div class="content"><%= htmlWebpackPlugin.options.content %></div>
     <div class="sticky-contact-me">

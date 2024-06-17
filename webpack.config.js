@@ -5,6 +5,8 @@ const HtmlWebpackInjectPreload = require("@principalstudio/html-webpack-inject-p
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
+// Extract html content from file with Node
+
 function transformHTML(htmlPath) {
   const location = path.resolve(__dirname, htmlPath);
   try {
@@ -15,6 +17,8 @@ function transformHTML(htmlPath) {
   }
 }
 
+// Reference for dev and public names for each page
+
 const pages = [
   { name: "index", pageName: "Acasă" },
   { name: "services", pageName: "Servicii" },
@@ -22,17 +26,21 @@ const pages = [
   { name: "contact", pageName: "Contact" },
 ];
 
-const entry = {};
-entry.main = `./src/main/main.js`;
+const entry = {
+  // Holds the static html content that is inherited by all pages (navbar, logo, footer...)
+  main: `./src/main/main.js`,
+};
+
+// Create an entry for each page
 pages.forEach((page) => {
   entry[page.name] = `./src/${page.name}/${page.name}.js`;
 });
 
 module.exports = {
   mode: "production",
-  // devtool: "eval-source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
+    // Store index files directly in dist, otherwise create separate directories (needed for GitHub pages to work)
     filename: ({ chunk }) => {
       if (chunk.name === "index") {
         return "[name].js";
@@ -51,52 +59,31 @@ module.exports = {
   plugins: [].concat(
     // eslint-disable-next-line
     pages.map((page) => {
+      // Generate HTML file for each page
       return new HtmlWebpackPlugin({
-        links: (() => {
+        // Different relative paths based on document's location inside dist
+        path: (() => {
           if (page.name === "index") {
-            return `
-          <ul>
-            <li>
-              <a id="home" href="./index.html">Acasă</a>
-            </li>
-            <li>
-              <a id="services" href="./services/services.html">Servicii</a>
-            </li>
-            <li>
-              <a id="gallery" href="./gallery/gallery.html">Galerie</a>
-            </li>
-            <li>
-              <a id="contact" href="./contact/contact.html">Contact</a>
-            </li>
-          </ul>
-          `;
+            return "./";
           }
-          return `
-        <ul>
-          <li>
-            <a id="home" href="../index.html">Acasă</a>
-          </li>
-          <li>
-            <a id="services" href="../services/services.html">Servicii</a>
-          </li>
-          <li>
-            <a id="gallery" href="../gallery/gallery.html">Galerie</a>
-          </li>
-          <li>
-            <a id="contact" href="../contact/contact.html">Contact</a>
-          </li>
-        </ul>
-        `;
+          return "../";
         })(),
+        // Combine the html content extracted from this page with the universaL html content of main.html (see 'template' bellow)
         content: transformHTML(`./src/${page.name}/${page.name}.html`),
-        localization: `<a class="disabled" href="../${page.name}/${page.name}.html">${page.pageName}</a>`,
+        // Href value used inside navigational links (a elements);
+        localization: `../${page.name}/${page.name}.html`,
+        // Name value used inside navigational links (a elements);
+        pageName: page.pageName,
         inject: true,
+        // Universal html content (navbar, logo, footer...);
         template: `./src/main/main.html`,
         filename: () => {
+          // Output index directly in dist to be served by GitHub pages
           if (page.name === "index") {
-            return `${page.name}.html`; // For the main page, output directly in dist
+            return `${page.name}.html`;
           }
-          return `${page.name}/${page.name}.html`; // For other pages, output in respective folder
+          // Output other pages in their respective folders
+          return `${page.name}/${page.name}.html`;
         },
         chunks: ["main", page.name],
         favicon: "./src/img/favicon.ico",
@@ -116,6 +103,7 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({
+      // Store index files directly in dist, otherwise create separate directories (needed for GitHub pages to work)
       filename: ({ chunk }) => {
         if (chunk.name === "index") {
           return "[name].css";
