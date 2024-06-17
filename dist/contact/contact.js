@@ -1,1 +1,0 @@
-(()=>{"use strict";document.querySelector("#contact").classList.add("selected")})();
