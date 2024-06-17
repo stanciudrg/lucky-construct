@@ -1,7 +1,10 @@
+/* Content wrapper defined on main.html */
 .content {
   align-items: stretch;
+  --theme-color-orange: rgba(245, 113, 81, 1);
 }
 
+/* Section wrapper */
 .gallery {
   max-width: 1300px;
   width: 100%;
@@ -9,6 +12,7 @@
   padding: 0 2rem;
 }
 
+/* Masonry layout wrapper, generated with masonry library (see gallery.js for more info) */
 #masonry::after {
   content: "";
   display: block;
@@ -49,14 +53,16 @@
   display: block;
   border-radius: 1rem;
 }
+/* -------------------- */
 
+/* Media queries for responsive design */
 @media (max-width: 1024px) {
   .localization {
     display: flex;
   }
 
   .localization span {
-    color: rgba(245, 113, 81, 1);
+    color: var(--theme-color-orange);
   }
 
   .gallery {
@@ -93,3 +99,4 @@
     display: initial;
   }
 }
+/* -------------------- */

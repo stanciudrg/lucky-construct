@@ -1,3 +1,11 @@
+/* Color variables */
+.content {
+  --theme-color-green: rgba(54, 143, 130, 1);
+  --theme-color-orange: rgba(245, 113, 81, 1);
+  --theme-color-blue: rgba(145, 176, 255, 1);
+}
+
+/* Section wrapper */
 .services {
   max-width: 1300px;
   width: 100%;
@@ -6,12 +14,14 @@
   --border-radius: 1rem;
 }
 
+/* Grid wrapper for all service cards */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
+/* Service card containing the service name and service image */
 .service {
   border-radius: var(--border-radius);
   display: flex;
@@ -20,11 +30,13 @@
   overflow: hidden;
 }
 
+/* Service image wrapper */
 .service-photo {
   padding-top: 100%;
   border-radius: var(--border-radius);
 }
 
+/* Service image */
 .service-photo img {
   position: absolute;
   top: 0;
@@ -35,6 +47,7 @@
   object-fit: cover;
 }
 
+/* Contains the service name */
 .service-info {
   z-index: 1;
   position: absolute;
@@ -53,6 +66,7 @@
   opacity: 1;
 }
 
+/* Hides service name to show full image on hover */
 @media (hover: hover) and (pointer: fine) {
   .service:hover .service-info {
     bottom: -25%;
@@ -64,7 +78,9 @@
   bottom: -25%;
   opacity: 0;
 }
+/* -------------------- */
 
+/* Service name text content */
 .service-info p {
   position: relative;
   display: inline-block;
@@ -73,6 +89,7 @@
   color: white;
 }
 
+/* Text underline decoration */
 .service-info p::after {
   content: "";
   height: 2px;
@@ -83,24 +100,26 @@
 }
 
 .service:nth-child(3n + 1) .service-info p::after {
-  background-color: rgba(54, 143, 130, 1);
+  background-color: var(--theme-color-green);
 }
 
 .service:nth-child(3n + 2) .service-info p::after {
-  background-color: rgba(245, 113, 81, 1);
+  background-color: var(--theme-color-orange);
 }
 
 .service:nth-child(3n + 3) .service-info p::after {
-  background-color: rgba(145, 176, 255, 1);
+  background-color: var(--theme-color-blue);
 }
+/* -------------------- */
 
+/* Media queries for responsive design */
 @media (max-width: 1024px) {
   .localization {
     display: flex;
   }
 
   .localization span {
-    color: rgba(54, 143, 130, 1);
+    color: var(--theme-color-green);
   }
 
   .services {
@@ -125,3 +144,4 @@
     top: 22px;
   }
 }
+/* -------------------- */

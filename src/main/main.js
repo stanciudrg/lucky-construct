@@ -6,26 +6,31 @@ const menuToggler = document.querySelector(".menu-toggler");
 const menuTogglerIcon = menuToggler.querySelector(".menu-toggler-icon");
 const nav = document.querySelector("nav");
 const navList = nav.querySelector("ul");
+// Used for checking the animation status of the navbar menu
+let animationInProgress = false;
 
+// Prevents FOIT, FUOC, and Cumulative Layout Shift
 document.addEventListener("DOMContentLoaded", () => {
   html.style.display = "initial";
 });
-window.addEventListener("load", () => {});
 
-let inProgress = false;
-
+// Menu toggler logic. Visible only on mobile
+// Animates from display "none" using requestAnimationFrame and transitionend events
 menuToggler.addEventListener("click", () => {
-  if (inProgress) return;
-  inProgress = true;
+  // Waits for animation to finish before submitting another click.
+  // Prevents animation cancelling
+  if (animationInProgress) return;
+  animationInProgress = true;
   menuTogglerIcon.classList.toggle("open");
 
   if (!navList.classList.contains("visible")) {
     const handleTransitionEnd = () => {
-      inProgress = false;
+      animationInProgress = false;
       navList.removeEventListener("transitionend", handleTransitionEnd);
     };
 
     navList.style.display = "flex";
+    // Disable mobile scrolling when navbar menu is open
     html.style.touchAction = "none";
 
     requestAnimationFrame(() => {
@@ -37,7 +42,7 @@ menuToggler.addEventListener("click", () => {
   } else {
     const handleTransitionEnd = () => {
       navList.style.display = "none";
-      inProgress = false;
+      animationInProgress = false;
       navList.removeEventListener("transitionend", handleTransitionEnd);
     };
 
@@ -50,6 +55,7 @@ menuToggler.addEventListener("click", () => {
   }
 });
 
+// Toggle the mobile navbar based on viewport width
 window.addEventListener("resize", () => {
   if (
     window.matchMedia("(max-width: 1024px)").matches &&

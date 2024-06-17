@@ -1,3 +1,12 @@
+/* Color variables */
+.content {
+  --theme-color-green: rgba(54, 143, 130, 1);
+  --theme-color-orange: rgba(245, 113, 81, 1);
+  --theme-color-blue: rgba(145, 176, 255, 1);
+  --text-color: rgba(20, 20, 20);
+}
+
+/* Hero section */
 .hero {
   position: relative;
   width: 100%;
@@ -10,6 +19,7 @@
   background-position-y: 100%;
 }
 
+/* Background overlay to improve text contrast */
 .hero::before {
   content: "";
   position: absolute;
@@ -26,6 +36,7 @@
   opacity: 1;
 }
 
+/* Contains the title, description, and "find-out-more" button */
 .hero-content {
   z-index: 1;
   display: flex;
@@ -35,6 +46,7 @@
   margin-top: 10rem;
 }
 
+/* Hero title */
 .title h1 {
   font-size: 64px;
   text-align: center;
@@ -43,6 +55,7 @@
   padding: 0;
 }
 
+/* Hero description */
 .description p {
   max-width: 515px;
   font-size: 20px;
@@ -52,6 +65,7 @@
   margin-top: 2rem;
 }
 
+/* Sends the user to the "about-me" section of the page */
 .find-out-more {
   position: relative;
   display: flex;
@@ -85,9 +99,9 @@
   height: 40px;
   background: linear-gradient(
     to bottom right,
-    rgba(54, 143, 130, 1) 0 33%,
-    rgba(245, 113, 81, 1) 33% 70%,
-    rgba(145, 176, 255, 1) 70% 100%
+    var(--theme-color-green) 0 33%,
+    var(--theme-color-orange) 33% 70%,
+    var(--theme-color-blue) 70% 100%
   );
 }
 
@@ -104,7 +118,9 @@
 .find-out-more:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
+/* -------------------- */
 
+/* Contains the rest of the page content (about-us and proof-of-concept) */
 .more {
   display: flex;
   flex-direction: column;
@@ -116,6 +132,7 @@
   gap: 8rem;
 }
 
+/* About me section */
 .about-us {
   flex: 1;
   max-width: 700px;
@@ -123,27 +140,31 @@
   flex-direction: column;
 }
 
+/* About me name tag */
 .about-us-tag {
   text-transform: uppercase;
-  color: rgba(54, 143, 130, 1);
+  color: var(--theme-color-green);
   font-weight: 500;
 }
 
+/* About me title */
 .about-us h2 {
   font-size: 32px;
   font-weight: 600;
   line-height: 1.2;
-  color: rgba(20, 20, 20);
+  color: var(--text-color);
   margin-top: 2rem;
 }
 
+/* About me actual text content */
 .about-us p {
   font-size: 20px;
   line-height: 1.4;
-  color: rgba(20, 20, 20);
+  color: var(--text-color);
   margin-top: 1.5rem;
 }
 
+/* Links pointing to other pages */
 .more-buttons {
   display: flex;
   gap: 1rem;
@@ -164,12 +185,14 @@
   border-radius: 2rem;
   cursor: pointer;
 }
+/* -------------------- */
 
+/* Links to contact page */
 .contact-me {
   background-image: linear-gradient(
     to bottom right,
     rgba(54, 143, 130, 0.8),
-    rgba(54, 143, 130, 1)
+    var(--theme-color-green)
   );
   transition: 250ms box-shadow ease-in-out;
   color: white;
@@ -179,13 +202,15 @@
   box-shadow: 0px 20px 35px 0 rgba(54, 143, 130, 0.2);
 }
 
+/* Links to services page */
 .our-services {
   position: relative;
-  border: 1px solid rgba(20, 20, 20);
+  border: 1px solid var(--text-color);
   gap: 8px;
   overflow: hidden;
 }
 
+/* Hover effects */
 .our-services::after {
   position: absolute;
   content: "";
@@ -204,15 +229,17 @@
 }
 
 .our-services span {
-  color: rgba(20, 20, 20);
+  color: var(--text-color);
 }
 
 .our-services svg {
   border-radius: 2rem;
   width: 22px;
-  fill: rgba(54, 143, 130, 1);
+  fill: var(--theme-color-green);
 }
+/* -------------------- */
 
+/* "My projects" section */
 .proof-of-concept {
   flex: 1;
   max-width: 1300px;
@@ -221,18 +248,21 @@
   flex-direction: column;
 }
 
+/* Contains the name tag and the title of the section */
 .proof-of-concept .top-side {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Proof of concept name tag */
 .proof-of-concept-tag {
   font-weight: 500;
   text-transform: uppercase;
-  color: rgba(245, 113, 81, 1);
+  color: var(--theme-color-orange);
 }
 
+/* Link pointing to the gallery page */
 .proof-of-concept .go-to-gallery {
   display: flex;
   align-items: center;
@@ -244,25 +274,30 @@
   gap: 2px;
 }
 
+/* Span containing the text content */
 .go-to-gallery span:first-of-type {
-  color: rgb(20, 20, 20);
+  color: var(--text-color);
 }
 
+/* Text underline decoration */
 .go-to-gallery span:last-of-type {
   width: 100%;
   height: 2px;
-  background-color: rgba(245, 113, 81, 1);
+  background-color: var(--theme-color-orange);
   border-radius: 2rem;
 }
 
+/* Proof-of-concept title */
 .proof-of-concept h2 {
   font-size: 32px;
   font-weight: 600;
   line-height: 1.2;
-  color: rgba(20, 20, 20);
+  color: var(--text-color);
   margin-top: 2rem;
 }
 
+/* Swiper library style declarations. See Swiper documentation for more information regarding the variables modified
+for this element */
 .swiper {
   width: 100%;
   height: 100%;
@@ -283,10 +318,12 @@
   height: 100%; /* Ensure images fit within slides */
   border-radius: 1rem;
 }
+/* -------------------- */
 
+/* Animations */
 @keyframes changecolor {
   0% {
-    background-color: rgba(145, 176, 255, 1);
+    background-color: var(--theme-color-blue);
   }
 
   25% {
@@ -294,7 +331,7 @@
   }
 
   50% {
-    background-color: rgba(245, 113, 81, 1);
+    background-color: var(--theme-color-orange);
   }
 
   75% {
@@ -302,7 +339,7 @@
   }
 
   100% {
-    background-color: rgba(54, 143, 130, 1);
+    background-color: var(--theme-color-green);
   }
 }
 
@@ -314,7 +351,9 @@
     background-position: 0% 0%;
   }
 }
+/* -------------------- */
 
+/* Media queries */
 @media (min-width: 1024px) {
   .swiper-scrollbar {
     display: none !important;
@@ -432,3 +471,4 @@
     font-size: 40px;
   }
 }
+/* -------------------- */

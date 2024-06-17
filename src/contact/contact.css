@@ -1,3 +1,12 @@
+/* Color variables */
+.content {
+  --theme-color-green: rgba(54, 143, 130, 1);
+  --theme-color-orange: rgba(245, 113, 81, 1);
+  --theme-color-blue: rgba(145, 176, 255, 1);
+  --text-color: rgba(20, 20, 20);
+}
+
+/* Section wrapper */
 .contact {
   max-width: 700px;
   width: 100%;
@@ -5,14 +14,16 @@
   margin: calc(8rem - 5px) auto 0 auto;
 }
 
+/* Section title */
 .contact h2 {
   font-size: 32px;
   font-weight: 600;
   line-height: 1.2;
-  color: rgba(20, 20, 20);
+  color: var(--text-color);
   text-align: center;
 }
 
+/* Contains WhatsApp, Phone, and Email details */
 .contact-details {
   display: flex;
   flex-direction: column;
@@ -22,7 +33,7 @@
 
 .contact-details > div {
   border-radius: 1rem;
-  border: 1px solid rgba(20, 20, 20);
+  border: 1px solid var(--text-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +41,7 @@
   padding: 1rem 0 0 0;
   overflow: hidden;
   position: relative;
-  color: rgba(20, 20, 20);
+  color: var(--text-color);
 }
 
 .contact-details span {
@@ -39,6 +50,7 @@
   font-size: 16px;
 }
 
+/* Icons portraying each contact type */
 .contact-details .whatsapp svg {
   width: 100px;
   height: 30px;
@@ -54,6 +66,7 @@
   height: 30px;
 }
 
+/* Links for each contact type (WhatsApp link for WhatsApp, "tel:" href for phone, "email:" href for email) */
 .contact-details a {
   text-decoration: none;
   color: inherit;
@@ -66,37 +79,41 @@
   transition: 250ms ease-in-out background-color;
 }
 
+/* WhatsApp link button */
 .contact-details .whatsapp > a {
   background-image: linear-gradient(
     to bottom right,
     rgba(54, 143, 130, 0.8),
-    rgba(54, 143, 130, 1)
+    var(--theme-color-green)
   );
 }
 
+/* Phone link button */
 .contact-details .phone > a {
   background-image: linear-gradient(
     to bottom right,
     rgba(245, 113, 81, 0.8),
-    rgba(245, 113, 81, 1)
+    var(--theme-color-orange)
   );
 }
 
+/* Email link button */
 .contact-details .email > a {
   background-image: linear-gradient(
     to bottom right,
     rgba(145, 176, 255, 0.8),
-    rgba(145, 176, 255, 1)
+    var(--theme-color-blue)
   );
 }
 
+/* Media queries for responsive design */
 @media (max-width: 1024px) {
   .localization {
     display: flex;
   }
 
   .localization span {
-    color: rgba(145, 176, 255, 1);
+    color: var(--theme-color-blue);
   }
 
   .contact {
@@ -126,3 +143,4 @@
     font-size: 16px;
   }
 }
+/* -------------------- */

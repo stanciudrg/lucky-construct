@@ -25,12 +25,9 @@
   unicode-range: U+000-5FF;
   font-display: swap;
 }
+/* -------------------- */
 
-html {
-  scroll-behavior: smooth;
-  display: none;
-}
-
+/* General declarations */
 *,
 *::after,
 *::before {
@@ -53,6 +50,14 @@ html {
   -webkit-tap-highlight-color: transparent;
   margin: 0;
   padding: 0;
+  --theme-color-green: rgba(54, 143, 130, 1);
+  --theme-color-orange: rgba(245, 113, 81, 1);
+  --theme-color-blue: rgba(145, 176, 255, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  display: none;
 }
 
 h1,
@@ -61,6 +66,7 @@ h3,
 h4 {
   font-weight: 500;
 }
+/* -------------------- */
 
 body {
   min-height: 100svh;
@@ -69,6 +75,7 @@ body {
   justify-content: space-between;
 }
 
+/* Top side (header) */
 header {
   z-index: 2;
   min-width: 335px;
@@ -80,6 +87,7 @@ header {
   box-shadow: 0 10px 50px 0px rgba(0, 0, 0, 0.1);
 }
 
+/* Navbar */
 nav {
   padding: 0.5rem 2rem;
   max-width: 1300px;
@@ -88,6 +96,9 @@ nav {
   margin: 0 auto;
 }
 
+/* Logo wrapper containing image and name, links to homepage */
+
+/* Logo link */
 .logo a {
   display: flex;
   align-items: center;
@@ -95,11 +106,13 @@ nav {
   gap: 0.8rem;
 }
 
+/* Logo image */
 .logo a img {
   height: 60px;
   width: 60px;
 }
 
+/* Logo name */
 .logo .name {
   display: flex;
   font-size: 26px;
@@ -108,10 +121,12 @@ nav {
   gap: 6px;
 }
 
+/* Logo span containing lucky symbol */
 .logo .name span:first-of-type {
   font-weight: 600;
 }
 
+/* Navigational list containing links to all pages */
 nav ul {
   display: flex;
   align-items: center;
@@ -120,6 +135,7 @@ nav ul {
   gap: 3rem;
 }
 
+/* Page links */
 nav ul li a {
   position: relative;
   font-size: 20px;
@@ -130,11 +146,13 @@ nav ul li a {
   transition: color 250ms ease-in-out;
 }
 
+/* Hover and selected effects for page links */
 nav ul li a.selected,
 nav ul li a:hover {
   color: rgba(0, 0, 0);
 }
 
+/* Shows a colored underline text decoration on the link of the current page */
 nav ul li a.selected::after {
   content: "";
   position: absolute;
@@ -145,13 +163,14 @@ nav ul li a.selected::after {
   width: calc(100% + 10px);
   background: linear-gradient(
     90deg,
-    rgba(54, 143, 130, 1) 0% 33%,
-    rgba(245, 113, 81, 1) 33% 66%,
-    rgba(145, 176, 255, 1) 66% 99%
+    var(--theme-color-green) 0% 33%,
+    var(--theme-color-orange) 33% 66%,
+    var(--theme-color-blue) 66% 99%
   );
   border-radius: 2rem;
 }
 
+/* Menu toggler button visible on mobile devices only */
 nav .menu-toggler {
   display: none;
   justify-content: center;
@@ -161,6 +180,7 @@ nav .menu-toggler {
   border: 0;
 }
 
+/* Menu toggler icon */
 nav .menu-toggler .menu-toggler-icon {
   position: relative;
   width: 24px;
@@ -184,18 +204,18 @@ nav .menu-toggler .menu-toggler-icon span {
 
 nav .menu-toggler .menu-toggler-icon span:nth-child(1) {
   top: 0px;
-  background-color: rgba(54, 143, 130, 1);
+  background-color: var(--theme-color-green);
 }
 
 nav .menu-toggler .menu-toggler-icon span:nth-child(2),
 nav .menu-toggler .menu-toggler-icon span:nth-child(3) {
   top: 8px;
-  background-color: rgba(245, 113, 81, 1);
+  background-color: var(--theme-color-orange);
 }
 
 nav .menu-toggler .menu-toggler-icon span:nth-child(4) {
   top: 16px;
-  background-color: rgba(145, 176, 255, 1);
+  background-color: var(--theme-color-blue);
 }
 
 nav .menu-toggler .menu-toggler-icon.open span:nth-child(1),
@@ -214,7 +234,9 @@ nav .menu-toggler .menu-toggler-icon.open span:nth-child(3) {
   background-color: rgba(60, 60, 60);
   transform: rotate(-40deg);
 }
+/* -------------------- */
 
+/* Contains the current location on the website and a link to go back to the homepage. Is not visible on the homepage */
 .localization {
   display: none;
   max-width: 1300px;
@@ -252,6 +274,9 @@ nav .menu-toggler .menu-toggler-icon.open span:nth-child(3) {
   font-weight: 600;
 }
 
+/* -------------------- */
+
+/* Holds each page's content */
 .content {
   width: 100%;
   display: flex;
@@ -260,6 +285,7 @@ nav .menu-toggler .menu-toggler-icon.open span:nth-child(3) {
   flex: 1;
 }
 
+/* Sticky "contact-me" button that is visible on mobile devices on "services" and "gallery" pages */
 .sticky-contact-me {
   display: none;
   z-index: 1;
@@ -280,9 +306,9 @@ nav .menu-toggler .menu-toggler-icon.open span:nth-child(3) {
   height: 60px;
   background: linear-gradient(
     to bottom right,
-    rgba(54, 143, 130, 1) 0 33%,
-    rgba(245, 113, 81, 1) 33% 70%,
-    rgba(145, 176, 255, 1) 70% 100%
+    var(--theme-color-green) 0 33%,
+    var(--theme-color-orange) 33% 70%,
+    var(--theme-color-blue) 70% 100%
   );
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
 }
@@ -291,7 +317,9 @@ nav .menu-toggler .menu-toggler-icon.open span:nth-child(3) {
   width: 20px;
   height: 20px;
 }
+/* -------------------- */
 
+/* Footer section */
 footer {
   max-width: 1300px;
   font-weight: 500;
@@ -299,6 +327,7 @@ footer {
   padding: 0 2rem;
 }
 
+/* Media queries for responsive design */
 @media (max-width: 1024px) {
   nav .menu-toggler {
     display: flex;

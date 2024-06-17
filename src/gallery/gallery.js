@@ -49,16 +49,34 @@ import "../img/gallery/47.webp";
 import "../img/gallery/48.webp";
 import "../img/gallery/49.webp";
 import "../img/gallery/50.webp";
+// eslint-disable-next-line
 import PhotoSwipeLightbox from "photoswipe/lightbox";
+// eslint-disable-next-line
 import "photoswipe/style.css";
 import Masonry from "masonry-layout";
 
 const navItem = document.querySelector("#gallery");
 navItem.classList.add("selected");
 
+const elem = document.querySelector("#masonry");
 const stickyButton = document.querySelector(".sticky-contact-me");
-
 const footer = document.querySelector("footer");
+
+// Shows a sticky "call-me" button when in mobile mode
+if (window.matchMedia("(max-width: 600px)").matches) {
+  window.addEventListener("scroll", () => {
+    // Prevents the sticky button above the footer
+    if (footer.getBoundingClientRect().top < window.innerHeight) {
+      stickyButton.style.bottom = "6rem";
+    } else {
+      stickyButton.style.bottom = "2rem";
+    }
+  });
+}
+
+// The following code creates a masonry layout with photos that can be clicked to open
+// a gallery. Check each library's documentation for more information about the settings
+// used inside the objects.
 
 document.addEventListener("DOMContentLoaded", () => {
   const lightbox = new PhotoSwipeLightbox({
@@ -69,20 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   lightbox.init();
 
-  const elem = document.querySelector("#masonry");
   const msnry = new Masonry(elem, {
     itemSelector: "a",
     columnWidth: ".grid-sizer",
     percentPosition: true,
   });
 });
-
-if (window.matchMedia("(max-width: 600px)").matches) {
-  window.addEventListener("scroll", () => {
-    if (footer.getBoundingClientRect().top < window.innerHeight) {
-      stickyButton.style.bottom = "6rem";
-    } else {
-      stickyButton.style.bottom = "2rem";
-    }
-  });
-}
